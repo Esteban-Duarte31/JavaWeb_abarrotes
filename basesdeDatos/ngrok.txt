@@ -1,0 +1,6 @@
+estando en la carpeta de ngrok
+
+ngrok.exe authtoken 1iKH0wbNMVerTE72Bqjzfa7EFgc_87FB1SNHDaF8KxfSHSr9y
+
+
+ngrok.exe http 80

@@ -1,0 +1,209 @@
+create database if not exists DataBaseProducts; 
+
+use DataBaseProducts;
+
+CREATE TABLE IF NOT EXISTS productos (
+    idProducto VARCHAR(10) PRIMARY KEY NOT NULL,
+    descripcion VARCHAR(200) NOT NULL,
+    stock INT NOT NULL,
+    categoria VARCHAR(20) NOT NULL,
+    precio INT NOT NULL,
+    imagen VARCHAR(200) NOT NULL
+);
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE insertProducto(
+	in	    _idProducto varchar(10),
+			_descripcion varchar(200),
+			_stock int,
+			_categoria varchar(20) ,
+			_precio int,
+            _imagen varchar(200)
+
+)begin
+
+insert into productos (idProducto, descripcion, stock, categoria, precio, imagen) values(_idProducto, _descripcion, _stock, _categoria, _precio, _imagen);
+
+END
+
+//DELIMITER ;
+
+
+
+DELIMITER //
+create procedure selectAllproductos(
+
+)begin
+select * from productos; 
+
+end
+//DELIMITER ;
+
+
+
+DELIMITER //
+create procedure deleteProducto(
+	in _idProducto varchar(10)
+)begin
+ 
+delete from productos where idProducto=_idProducto;
+end
+//DELIMITER ;
+
+
+
+DELIMITER //
+create procedure updateProducto(
+	in _idProducto varchar(10),
+			_descripcion varchar(200),
+			_stock int,
+			_categoria varchar(20) ,
+			_precio int
+)begin
+ 
+update productos set idProducto = _idProducto, descripcion= _descripcion, stock= _stock, categoria= _categoria, precio=_precio where idProducto= _idProducto;
+end
+//DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS ventas (
+    idVenta int auto_increment PRIMARY KEY NOT NULL,
+    idCliente VARCHAR(200) NOT NULL,
+    cliente VARCHAR(200) NOT NULL,
+    producto VARCHAR(200) NOT NULL,
+    cantidad VARCHAR(200) NOT NULL,
+    total VARCHAR(200) NOT NULL,
+    fecha VARCHAR(200) NOT NULL
+);
+
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE insertVenta(
+	in	    _idCliente varchar(200),
+			_cliente varchar(200),
+			_producto varchar(200),
+			_cantidad varchar(200) ,
+			_total varchar(200) ,
+			_fecha varchar(200)
+
+)begin
+
+insert into ventas (idCliente,cliente,producto,cantidad,total,fecha) values(_idCliente, _cliente,  _producto, _cantidad, _total, _fecha);
+
+END
+
+
+
+//DELIMITER ;
+
+
+
+
+DELIMITER //
+create procedure selectAllventas(
+
+)begin
+select * from ventas; 
+
+end
+//DELIMITER ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS clientes (
+    idCliente VARCHAR(100) PRIMARY KEY NOT NULL,
+    nombres VARCHAR(1000) NOT NULL,
+    edad int NOT NULL,
+    telefono VARCHAR(10) NOT NULL,
+    direccion VARCHAR(1000) NOT NULL
+);
+
+
+
+
+DELIMITER //
+CREATE PROCEDURE insertCliente(
+	in	    _idCliente varchar(100),
+			_nombres varchar(1000),
+			_edad int,
+			_telefono varchar(10) ,
+			_direccion varchar(1000)
+
+)begin
+
+insert into clientes (idCliente,nombres,edad,telefono,direccion) values(_idCliente, _nombres,  _edad, _telefono, _direccion);
+
+END
+
+//DELIMITER ;
+
+
+
+DELIMITER //
+create procedure selectAllClientes(
+
+)begin
+select * from clientes; 
+
+end
+//DELIMITER ;
+
+
+
+
+DELIMITER //
+create procedure deleteCliente(
+	in _idCliente varchar(100)
+)begin
+ 
+delete from clientes where idCliente=_idCliente;
+end
+//DELIMITER ;
+
+
+
+
+
+
+
